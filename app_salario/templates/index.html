@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Predicción de Salario</title>
+    <style>
+        body { font-family: Arial; background: #f5f5f5; text-align: center; margin-top: 50px; }
+        form { background: white; padding: 20px; border-radius: 10px; display: inline-block; }
+        input { margin: 10px; padding: 5px; }
+        button { padding: 8px 15px; background: #007bff; color: white; border: none; border-radius: 5px; }
+        h2 { color: #333; }
+        img { margin-top: 20px; border-radius: 10px; box-shadow: 0 0 5px rgba(0,0,0,0.2); }
+    </style>
+</head>
+<body>
+    <h2>Predicción de Salario</h2>
+    <form action="/predict" method="post">
+        <label>Años de experiencia:</label><br>
+        <input type="number" name="experiencia" step="any" required><br>
+        <button type="submit">Predecir</button>
+    </form>
+
+    {% if prediction_text %}
+        <h3>{{ prediction_text }}</h3>
+    {% endif %}
+
+    {% if plot_url %}
+        <img src="data:image/png;base64,{{ plot_url }}" alt="Gráfica de predicción">
+    {% endif %}
+</body>
+</html>
